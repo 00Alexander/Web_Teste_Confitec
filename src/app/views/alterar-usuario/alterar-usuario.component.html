@@ -1,0 +1,66 @@
+<h5>Altere o Usuairo</h5>
+<p>Preencha o formulário abaixo para autalizar o usuario.</p>
+<hr/>
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form #formCadastro="ngForm" (submit)="updateUser(formCadastro)">
+
+            <label>Nome:</label>
+            <input type="text" class="form-control"
+                  placeholder="Nome do usuario"
+                  name="name" [(ngModel)]=user.name/>
+            <div class="text-danger" *ngFor="let msg of errosName">
+                {{msg}}
+            </div>         
+            <br/>
+
+            <label>Sobrenome:</label>
+            <input type="text" class="form-control"
+                  placeholder="Sobrenome do usuario"
+                  name="lastName" [(ngModel)]=user.lastName/>
+            <div class="text-danger" *ngFor="let msg of errosLastName">
+                {{msg}}
+            </div>         
+            <br/>
+
+            <label>Email:</label>
+            <input type="text" class="form-control"
+                  placeholder="Email"
+                  name="email" [(ngModel)]=user.email/>
+            <div class="text-danger" *ngFor="let msg of errosEmail">
+                {{msg}}
+            </div>      
+            <br/>
+
+            <label>Data de Nascimento:</label>
+            <input type="text" class="form-control"
+                  placeholder="Data de nascimento"
+                  name="birthDate" [(ngModel)]=user.birthDate/>
+            <div class="text-danger" *ngFor="let msg of errosBirthDate">
+                {{msg}}
+            </div>         
+            <br/>
+
+            <label class="form-label">Escolaridade:</label>
+            <select id="inputState" class="form-select" name="scholarity" [(ngModel)]=user.scholarity>
+             <option>Infantil</option>
+             <option>Fundamental</option>
+             <option>Medio</option>
+             <option>Superior</option>
+            </select>
+            <div class="text-danger" *ngFor="let msg of errosScholarity">
+                 {{msg}}
+            </div> 
+            <br/>
+            
+            <input type="submit" value="Autualizar" class="btn btn-success btn-sm"/>
+
+        </form>
+        <br/>
+
+        <!--<strong>{{mensagem}}</strong>-->
+
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<h5>Cadastro de Usuairo</h5>
+<p>Preencha o formulário abaixo para incluir um usuario.</p>
+<hr/>
+
+<!-- mensagem do processamento-->
+<div class="alert alert-secondary" role="alert" [hidden]="!mensagemProcessando">
+    <strong>{{mensagemProcessando}}</strong> 
+</div>
+
+<!-- mensagem do sucesso-->
+<div class="alert alert-success" role="alert" [hidden]="!mensagemSucesso">
+    <strong>{{mensagemSucesso}}</strong>
+    <button type="button" class="close" (click)="limparMensagemSucesso()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+
+<!-- mensagem do erro-->
+<div class="alert alert-danger" role="alert" [hidden]="!mensagemErro">
+    <strong>{{mensagemErro}}</strong>
+    <button type="button" class="close" (click)="limparMensagemErro()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form #formCadastro="ngForm" (submit)="cadastrarUsuario(formCadastro)">
+
+            <label>Nome:</label>
+            <input type="text" class="form-control"
+                  placeholder="Nome do usuario"
+                  name="name" ngModel/>
+            <div class="text-danger" *ngFor="let msg of errosName">
+                {{msg}}
+            </div>         
+            <br/>
+
+            <label>Sobrenome:</label>
+            <input type="text" class="form-control"
+                  placeholder="Sobrenome do usuario"
+                  name="lastName" ngModel/>
+            <div class="text-danger" *ngFor="let msg of errosLastName">
+                {{msg}}
+            </div>         
+            <br/>
+
+            <label>Email:</label>
+            <input type="text" class="form-control"
+                  placeholder="Email"
+                  name="email" ngModel/>
+            <div class="text-danger" *ngFor="let msg of errosEmail">
+                {{msg}}
+            </div>      
+            <br/>
+
+            <label>Data de Nascimento:</label>
+            <input type="date" class="form-control"
+                  placeholder="Data de nascimento"
+                  name="birthDate" ngModel/>
+            <div class="text-danger" *ngFor="let msg of errosBirthDate">
+                {{msg}}
+            </div>         
+            <br/>
+
+            <label class="form-label">Escolaridade:</label>
+            <select id="inputState" class="form-select" name="scholarity" ngModel>
+             <option selected>Infantil</option>
+             <option>Fundamental</option>
+             <option>Medio</option>
+             <option>Superior</option>
+            </select>
+            <div class="text-danger" *ngFor="let msg of errosScholarity">
+                 {{msg}}
+            </div> 
+            <br/>
+            
+            <input type="submit" value="Cadastrar Cliente" class="btn btn-success btn-sm"/>
+
+        </form>
+        <br/>
+
+        <!--<strong>{{mensagem}}</strong>-->
+
+    </div>
+</div>

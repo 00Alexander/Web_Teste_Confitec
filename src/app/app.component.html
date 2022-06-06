@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand">
+    <img src="https://res.cloudinary.com/coodesh/image/upload/v1607358014/companies/1682bca1-38a8-11eb-9234-a96c8d3baad6/1682bca0-38a8-11eb-9234-a96c8d3baad6.jpg"
+     class="rounded">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+              <a class="nav-link" routerLink="">Página inicial <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="cadastrar-usuario">Cadastrar Usuario <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="consultar-usuario">Lista de Usuario <span class="sr-only"></span></a>
+          </li>       
+      </ul>           
+  </div>
+</nav>
+
+<div class="container mt-3">
+<router-outlet></router-outlet>
+</div>

@@ -1,0 +1,52 @@
+<h5>Consulta de Usuarios</h5>
+<p>Relação de usuarios cadastrados no sistema.</p>
+<hr/>
+
+<!-- mensagem do sucesso-->
+<div class="alert alert-success" role="alert" [hidden]="!mensagemSucesso">
+    <strong>{{mensagemSucesso}}</strong>
+    <button type="button" class="close" (click)="limparMensagemSucesso()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+
+<!-- mensagem do erro-->
+<div class="alert alert-danger" role="alert" [hidden]="!mensagemErro">
+    <strong>{{mensagemErro}}</strong>
+    <button type="button" class="close" (click)="limparMensagemErro()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+
+<table class="table table-bordered table-houver table-stripped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Email</th>
+            <th>Data de Nacimento</th>
+            <th>Escolaridade</th>
+            <th>Operações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userList">
+            <td>{{user.name}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.birthDate}}</td>
+            <td>{{user.scholarity}}</td>
+            <td width='170'>
+                <button class="btn btn-sm btn-primary mr-1" (click)=changePage(user.id) >Atualizar</button>
+                <button class="btn btn-sm btn-danger mr-1" (click)=deleteUser(user.id)>Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot >
+        <tr>
+            <td colspan="5">
+                Quntidade de usuarios: {{count}}
+            </td>
+        </tr>
+    </tfoot>
+</table>
