@@ -17,12 +17,6 @@ export class AlterarUsuarioComponent implements OnInit {
   mensagemSucesso:string;
   mensagemErro:string;
 
-  errosName: []; 
-  errosLastName: []; 
-  errosEmail: []; 
-  errosBirthDate: []; 
-  errosScholarity: [];
-
   constructor(private service: UserService,
               private router: Router,
               private activateRoute: ActivatedRoute) { }
@@ -33,25 +27,18 @@ export class AlterarUsuarioComponent implements OnInit {
         this.user = data;})
     })
   }
-  updateUser(formCadastro){
+  updateUser(): void{
 
     this.mensagemProcessando = "Processando requisição, por favor aguarde...";
     this.mensagemSucesso = "";
     this.mensagemErro= "";
-    this.errosName = [];
-    this.errosLastName = [];
-    this.errosEmail = [];
-    this.errosBirthDate = [];
-    this.errosScholarity = [];
-
-    this.user = formCadastro.value;
     
-    this.service.update(formCadastro.value)
+    this.service.update(this.user)
       .subscribe(
         success => {
           this.mensagemProcessando = "";
           this.mensagemSucesso = success;  
-          formCadastro.reset();
+          this.router.navigateByUrl('consultar-usuario');
         },
         e => {
           this.mensagemProcessando = "";
@@ -59,16 +46,6 @@ export class AlterarUsuarioComponent implements OnInit {
          switch(e.status){
           case 400: 
             this.mensagemErro = "Ocorreram erros de validação no formulario";
-
-            var validations = JSON.parse(e.error);
-
-            this.errosName = validations.errors.Name;
-            this.errosLastName = validations.errors.LastName;
-            this.errosEmail = validations.errors.Email;
-            this.errosBirthDate = validations.errors.BirthDate;
-            this.errosScholarity = validations.errors.Scholarity;
-
-            break;
 
           case 403: 
           this.mensagemErro = e.error;
@@ -85,6 +62,13 @@ export class AlterarUsuarioComponent implements OnInit {
         }
       );
 
+  }
+
+  limparMensagemSucesso(){
+    this.mensagemSucesso ="";
+  }
+  limparMensagemErro(){
+    this.mensagemErro ="";
   }
 
 }
